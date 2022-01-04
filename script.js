@@ -1,23 +1,40 @@
+//global variables pointing to id's/classes containers in html
+
 var startButton = document.getElementById("start-button");
-const nextButton = document.getElementById("next-button");
-const mainContainer = document.getElementById("main-container");
+let nextButton = document.getElementById("next-button");
+let mainContainer = document.getElementById("main-container");
+let answerChoices = document.querySelectorAll("#choice");
+let askedQuestions = document.getElementById("question");
 
-var choices = document.getElementById("")
-
+// Start Button to start game
 startButton.addEventListener("click", startGame);
 
+// Show's hidden container when start button is clicked
+// Will add timer later
 function startGame(){
   startButton.classList.add("hide");
   mainContainer.classList.remove("hide");
+  showQuestions();
 }
 
-
-const questions = [
+// Test questions for now
+let questions = 
   {
-    question: 'What is 2+2?',
-    answers: [
-      { text: '4', correct: true },
-      { text: '1', correct: false}
-    ]
+    question: "What is 2+2?",
+    answers: ['1','2','3','4'],
+    correct: 3
   }
-]
+
+// Populate list in html with array of questions and answers  
+
+function showQuestions(){
+
+  askedQuestions.textContent = questions.question;
+  
+  answerChoices.forEach(function(element, index){
+    element.textContent = questions.answers[index];
+  });
+
+  console.log(answerChoices);
+}
+
