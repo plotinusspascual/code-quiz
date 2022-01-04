@@ -1,11 +1,14 @@
-const startButton = document.getElementById('start-button');
-const nextButton = document.getElementById('next-button');
+var startButton = document.getElementById("start-button");
+const nextButton = document.getElementById("next-button");
+const mainContainer = document.getElementById("main-container");
 
 var choices = document.getElementById("")
 
+startButton.addEventListener("click", startGame);
 
-function startQuiz(){
-
+function startGame(){
+  startButton.classList.add("hide");
+  mainContainer.classList.remove("hide");
 }
 
 
