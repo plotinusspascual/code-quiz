@@ -23,33 +23,33 @@ function startGame(){
 var questionBank = [
     //index[0]
     {
-      question: "What is my favorite flavor chips",
+      question: "What is my favorite flavor chips?",
       choices: ["Original", "BBQ", "Salt and Vinegar", "Lighty Salted"],
       correct: "Original",
     },
     //index[1]
     {
-      question: "2+2",
-      choices: ["1", "2", "3", "4"],
-      correct: "4",
+      question: "What is my go to beverage?",
+      choices: ["Coffee", "Tea", "Soda", "Water"],
+      correct: "Soda",
     },
     //index[2]
     {
-      question: "2+2",
-      choices: ["1", "2", "3", "4"],
-      correct: "4",
+      question: "Who is my least favorite marvel character?",
+      choices: ["Black Widow", "Hawkeye", "Spiderman", "Nick Fury"],
+      correct: "Black Widow",
     },
     //index[3]
     {
-      question: "2+2",
-      choices: ["1", "2", "3", "4"],
-      correct: "4",
+      question: "What is my golf handicap?",
+      choices: ["0", "10", "15", "20"],
+      correct: "20",
     },
     //index[4]
     {
-      question: "2+2",
-      choices: ["1", "2", "3", "4"],
-      correct: "4",
+      question: "What is my favorite Soda?",
+      choices: ["Pepsi", "Coke", "Dr. Pepper", "Sprite"],
+      correct: "Coke",
     },
 ]
 
