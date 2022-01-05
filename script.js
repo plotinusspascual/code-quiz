@@ -5,6 +5,8 @@ let nextButton = document.getElementById("next-button");
 let questionCard = document.getElementById("question-card");
 let choiceCard = document.getElementById("choice-card");
 
+
+let questionCounter = 1;
 // Start Button to start game
 startButton.addEventListener("click", startGame);
 
@@ -14,8 +16,6 @@ function startGame(){
   startButton.classList.add("hide");
   mainContainer.classList.remove("hide");
   showQuestions();
-  //hides next button
-  // nextButton.classList.add("hide"); 
 }
 
 // Test questions for now
@@ -59,26 +59,30 @@ function showQuestions(){
 
   questionCard.innerHTML = "";
   choiceCard.innerHTML = "";
-  //print choices in button
+  //set question number so we can use it for questionbank initial index
+  //print question
+  questionCard.textContent = questionBank[questionCounter-1].question;
   //Need to get question number so it knows what array to print out
+  //print choices in button
   for(var i=0; i<questionBank.length-1; i++){
     let createButton = document.createElement("BUTTON");
-  //print question
-  console.log(i);
-    questionCard.textContent = questionBank[i].question;
-    console.log(questionCard);
-   // console.log(questionBank.length);
-    createButton.innerHTML = questionBank[i].choices[i];
+    
+    createButton.innerHTML = questionBank[questionCounter-1].choices[i];
     choiceCard.appendChild(createButton);
+
+    createButton.addEventListener("click", submitButton);
   };
 }
 
-// Make next button a submit button 
-// After clicking next, check to see if chosen button is correct
-// Increment some sort of variable if correct
-// Next button should show next set of questions
-// 
-
-function submitButton(){
-
+//compare user selected button to answer
+function submitButton(event){
+  console.log(event);
+  const userSelectBtn = event.target.innerHTML;
+  console.log(userSelectBtn);
+  console.log(questionBank[questionCounter-1].correct);
+  if(userSelectBtn == questionBank[questionCounter-1].correct){
+    console.log(true);
+  } else{
+    console.log(false);
+  }
 }
