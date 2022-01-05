@@ -4,19 +4,35 @@ let mainContainer = document.getElementById("main-container");
 let nextButton = document.getElementById("next-button");
 let questionCard = document.getElementById("question-card");
 let choiceCard = document.getElementById("choice-card");
+let timerCounter = document.querySelector(".timer-counter");
 
 //counters
 let questionCounter = 1;
 let score = 0;
+
+//timer var
+var timer;
+var timerCount;
+// Will add timer later
+function startTimer(){
+  timer = setInterval(function(){
+    timerCount--;
+    timerCounter.textContent = timerCount;
+  }, 1000);
+}
+
+
 // Start Button to start game
 startButton.addEventListener("click", startGame);
 
 // Show's hidden container when start button is clicked
-// Will add timer later
+
 function startGame(){
+  timerCount = 20;
   startButton.classList.add("hide");
   mainContainer.classList.remove("hide");
   showQuestions();
+  startTimer();
 }
 
 // Test questions for now
