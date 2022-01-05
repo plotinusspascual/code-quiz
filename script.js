@@ -5,8 +5,9 @@ let nextButton = document.getElementById("next-button");
 let questionCard = document.getElementById("question-card");
 let choiceCard = document.getElementById("choice-card");
 
-
+//counters
 let questionCounter = 1;
+let score = 0;
 // Start Button to start game
 startButton.addEventListener("click", startGame);
 
@@ -82,7 +83,10 @@ function submitButton(event){
   console.log(questionBank[questionCounter-1].correct);
   if(userSelectBtn == questionBank[questionCounter-1].correct){
     console.log(true);
+    score++;
   } else{
     console.log(false);
   }
+  questionCounter++;
+  showQuestions();
 }
