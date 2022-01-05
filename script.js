@@ -30,11 +30,14 @@ let questions =
 function showQuestions(){
 
   askedQuestions.textContent = questions.question;
-  
+
   answerChoices.forEach(function(element, index){
     element.textContent = questions.answers[index];
   });
-
-  console.log(answerChoices);
 }
 
+// Make next button a submit button 
+// After clicking next, check to see if chosen button is correct
+// Increment some sort of variable if correct
+// Next button should show next set of questions
+// 
