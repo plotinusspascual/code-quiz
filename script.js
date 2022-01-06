@@ -38,6 +38,7 @@ function endGame(){
   console.log("Final Score: " + score);
   // mainContainer.classList.add("hide");
   // hsContainer.classList.remove("hide");
+  console.log("Timer Count" + timerCount);
   submitUserScore();
 }
 
@@ -104,10 +105,10 @@ function showQuestions(){
     questionCard.textContent = questionBank[questionCounter-1].question;
 
     let createButton = document.createElement("BUTTON");
+    createButton.style.padding = "5px";
     
     createButton.innerHTML = questionBank[questionCounter-1].choices[i];
     choiceCard.appendChild(createButton);
-
     createButton.addEventListener("click", submitButton);
   };
 }
@@ -156,17 +157,20 @@ function submitUserScore(){
 function saveUserInput(){
   var userScore = {
     name: userInitial.value,
-    score: timerCount.value
+    finalScore: timerCount
   };
   localStorage.setItem("userScore", JSON.stringify(userScore));
 }
 
 function renderUserInput(){
+
   var lastInput = JSON.parse(localStorage.getItem("userScore"));
-  if(lastInput !== null){
-    document.getElementById("highscore-list").innerHTML = lastInput.name;
-  }else{
-    return;
+  for(var i=0; i<localStorage.length; i++){
+    if(lastInput !== null){
+      hsList.innerHTML = lastInput.name + " "+ lastInput.finalScore;
+    }else{
+      return;
+    }
   }
 }
 

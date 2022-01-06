@@ -5,15 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/style.css"/>
-  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand&display=swap" rel="stylesheet">
+  
+  <title>My Quiz</title>
 </head>
 <body>
+  <h1>How Well Do You Know Jose?</h1>
   <div id="main-container" class="hide">
-    <div class="timer-counter"></div>
-    <div id="question-counter"></div>
-    <div id="question-card">Question</div>
-    <li id="choice-card">Answers</li>  
-    <!-- <button id="next-button">Next</button> -->
+    <div class="box-container">
+      <div class="timer-counter"></div>
+      <div id="question-counter"></div>
+      <div id="question-card">Question</div>
+      <li id="choice-card" >Answers</li>  
+    </div>
   </div>
   <button id="start-button">Start</button>
 
@@ -25,6 +31,7 @@
     </form>
     <p>High Scores: </p>
     <ul id="highscore-list"></ul>
+    
   </div>
   <script src="script.js"></script>
 </body>
