@@ -18,9 +18,18 @@ function startTimer(){
   timer = setInterval(function(){
     timerCount--;
     timerCounter.textContent = timerCount;
+
+    if(timerCount === 0){
+      clearInterval(timer);
+      endGame();
+    }
   }, 1000);
 }
 
+//When timer runs out or end of questions
+function endGame(){
+  console.log("Final Score: " + score);
+}
 
 // Start Button to start game
 startButton.addEventListener("click", startGame);
@@ -31,8 +40,8 @@ function startGame(){
   timerCount = 20;
   startButton.classList.add("hide");
   mainContainer.classList.remove("hide");
-  showQuestions();
   startTimer();
+  showQuestions();
 }
 
 // Test questions for now
@@ -77,11 +86,13 @@ function showQuestions(){
   questionCard.innerHTML = "";
   choiceCard.innerHTML = "";
   //set question number so we can use it for questionbank initial index
-  //print question
-  questionCard.textContent = questionBank[questionCounter-1].question;
   //Need to get question number so it knows what array to print out
   //print choices in button
+  
   for(var i=0; i<questionBank.length-1; i++){
+    //print question
+    questionCard.textContent = questionBank[questionCounter-1].question;
+
     let createButton = document.createElement("BUTTON");
     
     createButton.innerHTML = questionBank[questionCounter-1].choices[i];
@@ -93,16 +104,22 @@ function showQuestions(){
 
 //compare user selected button to answer
 function submitButton(event){
-  console.log(event);
+  //console.log(event);
   const userSelectBtn = event.target.innerHTML;
-  console.log(userSelectBtn);
-  console.log(questionBank[questionCounter-1].correct);
+  //console.log(userSelectBtn);
+  //console.log(questionBank[questionCounter-1].correct);
   if(userSelectBtn == questionBank[questionCounter-1].correct){
-    console.log(true);
+    //console.log(true);
     score++;
+    console.log("Score: " + score);
   } else{
-    console.log(false);
+    console.log("Incorrect");
   }
   questionCounter++;
-  showQuestions();
+  console.log(questionBank.length);
+  if(questionCounter <= questionBank.length){
+    showQuestions();
+  }else{
+    endGame();
+  }
 }
