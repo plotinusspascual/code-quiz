@@ -19,7 +19,7 @@ function startTimer(){
     timerCount--;
     timerCounter.textContent = timerCount;
 
-    if(timerCount === 0){
+    if(timerCount <= 0){
       clearInterval(timer);
       endGame();
     }
@@ -113,6 +113,7 @@ function submitButton(event){
     score++;
     console.log("Score: " + score);
   } else{
+    timerCount -= 5;
     console.log("Incorrect");
   }
   questionCounter++;
