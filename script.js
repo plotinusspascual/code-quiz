@@ -5,7 +5,12 @@ let nextButton = document.getElementById("next-button");
 let questionCard = document.getElementById("question-card");
 let choiceCard = document.getElementById("choice-card");
 let timerCounter = document.querySelector(".timer-counter");
-
+//Highscore Containers
+let hsContainer = document.getElementById("highscore-container");
+let hsCard = document.querySelector("#highscore-card");
+let hsList = document.getElementById("highscore-list");
+let userInitial = document.getElementById("user-initial");
+ 
 //counters
 let questionCounter = 1;
 let score = 0;
@@ -28,7 +33,12 @@ function startTimer(){
 
 //When timer runs out or end of questions
 function endGame(){
+  clearInterval(timer);
+  alert("Quiz is done!");
   console.log("Final Score: " + score);
+  // mainContainer.classList.add("hide");
+  // hsContainer.classList.remove("hide");
+  submitUserScore();
 }
 
 // Start Button to start game
@@ -124,3 +134,78 @@ function submitButton(event){
     endGame();
   }
 }
+
+// ---------- High Score Local Storage ---------- //
+
+
+let submitScore = document.getElementById("submit-score");
+
+
+function submitUserScore(){
+
+  mainContainer.classList.add("hide");
+  hsContainer.classList.remove("hide");
+
+  submitScore.addEventListener("click", function(event){
+    event.preventDefault();
+    saveUserInput();
+    renderUserInput();
+  });
+}
+
+function saveUserInput(){
+  var userScore = {
+    name: userInitial.value,
+    score: timerCount.value
+  };
+  localStorage.setItem("userScore", JSON.stringify(userScore));
+}
+
+function renderUserInput(){
+  var lastInput = JSON.parse(localStorage.getItem("userScore"));
+  if(lastInput !== null){
+    document.getElementById("highscore-list").innerHTML = lastInput.name;
+  }else{
+    return;
+  }
+}
+
+function init(){
+  renderUserInput();
+}
+init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // submitScore.onclick = function(event){
+  //   event.preventDefault();
+  //   let name = userInitial.value;
+  //   console.log(name);
+
+  //   if(name !== null){
+  //     localStorage.setItem("userNameInput", JSON.stringify(name));
+  //   }
+  // };
+
+  // for(let i = 0; i <localStorage.length; i++){
+  //   var printName = JSON.parse(localStorage.getItem("userNameInpus"));
+
+  //   if(printName !== null){
+  //     document.getElementById("highscore-list").innerHTML = printName;
+  //   }
+  //   console.log(printName);
+  // }
+//}
+
